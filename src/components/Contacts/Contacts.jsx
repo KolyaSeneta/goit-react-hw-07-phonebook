@@ -1,10 +1,11 @@
 import { nanoid } from '@reduxjs/toolkit';
-import { addContactAction } from 'components/redux/contactsRedux/contacts-slice';
+
 import { selectContacts } from 'components/redux/contactsRedux/contactsSelector';
 import { useState } from 'react';
 // import css from './Contacts/contacts.module.css'
 import { useDispatch, useSelector } from 'react-redux';
 
+import { addContactsThunk } from '../redux/contactsRedux/contactsThunk';
 export const Contacts = () => {
   const [state, setState] = useState({
     name: '',
@@ -26,7 +27,7 @@ export const Contacts = () => {
       alert(`${name} is already in contacts.`);
     } else {
       //
-      dispatch(addContactAction(data));
+      dispatch(addContactsThunk(data));
     }
   };
 
